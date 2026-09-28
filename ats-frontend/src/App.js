@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import "./App.css";
+const API_BASE_URL =
+  process.env.REACT_APP_API_URL || "http://localhost:5000";
 
 function App() {
   const [resume, setResume] = useState(null);
@@ -107,7 +109,7 @@ function App() {
       formData.append("jobDescription", jobDescription);
 
       const response = await fetch(
-        "http://localhost:5000/match",
+        `${API_BASE_URL}/match`,
         {
           method: "POST",
           body: formData,
@@ -193,7 +195,7 @@ function App() {
       formData.append("jobDescription", jobDescription);
 
       const response = await fetch(
-        "http://localhost:5000/analyze",
+        `${API_BASE_URL}/analyze`,
         {
           method: "POST",
           body: formData,
